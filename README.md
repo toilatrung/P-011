@@ -8,13 +8,16 @@ triển tool.
 
 | Thành viên | Mã học viên | GitHub | Vị trí hiện tại |
 |---|---|---|---|
-| Trần Đức Thọ | 02324 | Chưa cung cấp | Lead · Annotator · Reviewer |
-| Trịnh Quang Trung | 02096 | [@toilatrung](https://github.com/toilatrung) | Annotator · Reviewer |
-| Nguyễn Xuân Việt Anh | 02102 | [@Vietanhhhhhh2003](https://github.com/Vietanhhhhhh2003) | Annotator · Reviewer |
-| Nguyễn Đức Hà | 02105 | Chưa cung cấp | Annotator · Reviewer |
-| Lê Ngọc Nam | 02060 | [@duy12345-6789](https://github.com/duy12345-6789) | Annotator · Reviewer |
+| Trịnh Quang Trung | 2A202602096 | [@toilatrung](https://github.com/toilatrung) | Lead chính · Annotator · Reviewer |
+| Trần Đức Thọ | 2A202602324 | Chưa cung cấp | Lead phụ · Annotator · Reviewer |
+| Nguyễn Xuân Việt Anh | 2A202602102 | [@Vietanhhhhhh2003](https://github.com/Vietanhhhhhh2003) | Annotator · Reviewer |
+| Nguyễn Đức Hà | 2A202602105 | Chưa cung cấp | Annotator · Reviewer |
+| Lê Ngọc Nam | 2A202602060 | [@duy12345-6789](https://github.com/duy12345-6789) | Annotator · Reviewer |
 
 > Reviewer không review job do chính mình gán.
+
+- **Lead chính — Trịnh Quang Trung:** phụ trách phân công và điều phối task SEGMENTATION.
+- **Lead phụ — Trần Đức Thọ:** phụ trách phân công và điều phối các task BBOX.
 
 ## Dữ liệu đang thực hiện
 

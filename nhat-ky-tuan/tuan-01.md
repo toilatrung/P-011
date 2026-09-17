@@ -1,6 +1,8 @@
 # Nhật ký tuần 01 · 15/09 – 21/09/2026
 
-**Lead tuần này:** Trần Đức Thọ (GitHub chưa cung cấp)
+**Lead chính:** Trịnh Quang Trung ([@toilatrung](https://github.com/toilatrung)) — phụ trách phân công task SEGMENTATION
+
+**Lead phụ:** Trần Đức Thọ (GitHub chưa cung cấp) — phụ trách phân công các task BBOX
 
 **Dữ liệu / task CVAT:** [Task 130 — W1-BBOX-G2-T1](https://cvat.note.transformerlabs.ai/tasks/130) · [Task 184 — W1-SEG-G2-T1](https://cvat.note.transformerlabs.ai/tasks/184)
 
@@ -8,30 +10,30 @@
 
 | Thành viên | Vị trí | Phân công tuần này |
 |---|---|---|
-| Trần Đức Thọ (02324) | Lead · Annotator · Reviewer | Điều phối task 130; annotate job 1586; kiểm tra và đổi người nếu annotator task 130 bận |
-| Trịnh Quang Trung (02096, @toilatrung) | Annotator · Reviewer | Annotate job 1370; kiểm tra tiến độ jobs 1586, 1591 |
-| Nguyễn Xuân Việt Anh (02102, @Vietanhhhhhh2003) | Annotator | Annotate job 1372 |
-| Nguyễn Đức Hà (02105) | Annotator | Annotate job 1374 |
-| Lê Ngọc Nam (02060, @duy12345-6789) | Annotator | Annotate jobs 1376, 1591 |
+| Trịnh Quang Trung (2A202602096, @toilatrung) | Lead chính · Annotator · Reviewer | Phân công task SEGMENTATION; annotate và rework job 1370; review job 1586 |
+| Trần Đức Thọ (2A202602324) | Lead phụ · Annotator · Reviewer | Phân công các task BBOX; annotate job 1586; review job 1376 |
+| Nguyễn Xuân Việt Anh (2A202602102, @Vietanhhhhhh2003) | Annotator · Reviewer | Annotate job 1372; review job 1370 |
+| Nguyễn Đức Hà (2A202602105) | Annotator · Reviewer | Annotate job 1374; review job 1372 |
+| Lê Ngọc Nam (2A202602060, @duy12345-6789) | Annotator · Reviewer | Annotate job 1376; review job 1374 |
 
 ## Công việc
 
 | # | Nội dung công việc | Annotator | Reviewer / điều phối | Hoàn thành | Ghi chú |
 |---|---|---|---|---|---|
-| 1 | [Job 1370](https://cvat.note.transformerlabs.ai/tasks/130/jobs/1370) — W1-BBOX-G2-T1, G02_B001–G02_B025 | @toilatrung | Trần Đức Thọ | 🟡 100% annotate | 25/25 ảnh, 151 annotations; đang self-QC / chờ review; vướng [P-001](../problem-backlog.md#p-001), [P-002](../problem-backlog.md#p-002) |
-| 2 | [Job 1372](https://cvat.note.transformerlabs.ai/tasks/130/jobs/1372) — W1-BBOX-G2-T1 | @Vietanhhhhhh2003 | Trần Đức Thọ | 🟡 100% annotate | Báo cáo 25/25 frame, trạng thái Done, không blocker; chưa có xác nhận đã qua review |
-| 3 | [Job 1374](https://cvat.note.transformerlabs.ai/tasks/130/jobs/1374) — W1-BBOX-G2-T1 | Nguyễn Đức Hà | Trần Đức Thọ | ⬜ 0% được báo cáo | Nhắc lần cuối sau 24 giờ chưa bắt đầu; Lead cần kiểm tra và đổi người nếu bận |
-| 4 | [Job 1376](https://cvat.note.transformerlabs.ai/tasks/130/jobs/1376) — W1-BBOX-G2-T1 | @duy12345-6789 | Trần Đức Thọ | 🟡 60% được báo cáo | Báo 15/25 frame nhưng đồng thời ghi “Done”; link kèm báo cáo lại trỏ job 1591 — cần xác nhận số liệu |
-| 5 | [Job 1586](https://cvat.note.transformerlabs.ai/tasks/184/jobs/1586) — W1-SEG-G2-T1 | Trần Đức Thọ | @toilatrung | ⬜ 0% được báo cáo | Nhắc lần cuối sau 24 giờ chưa bắt đầu; reviewer cần kiểm tra và đổi người nếu bận |
-| 6 | [Job 1591](https://cvat.note.transformerlabs.ai/tasks/184/jobs/1591) — W1-SEG-G2-T1 | @duy12345-6789 | @toilatrung | ⬜ 0% được báo cáo | Nhắc lần cuối sau 24 giờ chưa bắt đầu; cần xác nhận liệu số liệu 15/25 có thực ra thuộc job này |
+| 1 | [Job 1370](https://cvat.note.transformerlabs.ai/tasks/130/jobs/1370) — W1-BBOX-G2-T1, G02_B001–G02_B025 | @toilatrung | Nguyễn Xuân Việt Anh | 🟡 Đang rework | Đã hoàn thành lượt annotate ban đầu; đang sửa theo feedback; vướng [P-001](../problem-backlog.md#p-001), [P-002](../problem-backlog.md#p-002) |
+| 2 | [Job 1372](https://cvat.note.transformerlabs.ai/tasks/130/jobs/1372) — W1-BBOX-G2-T1 | @Vietanhhhhhh2003 | Nguyễn Đức Hà | 🟡 Đang làm | Chưa cập nhật tổng frame và số frame đã annotate |
+| 3 | [Job 1374](https://cvat.note.transformerlabs.ai/tasks/130/jobs/1374) — W1-BBOX-G2-T1 | Nguyễn Đức Hà | Lê Ngọc Nam | ⬜ Chưa làm | Chưa cập nhật tổng frame và số frame đã annotate |
+| 4 | [Job 1376](https://cvat.note.transformerlabs.ai/tasks/130/jobs/1376) — W1-BBOX-G2-T1 | @duy12345-6789 | Trần Đức Thọ | ⬜ Chưa làm | Chưa cập nhật tổng frame và số frame đã annotate |
+| 5 | [Job 1586](https://cvat.note.transformerlabs.ai/tasks/184/jobs/1586) — W1-SEG-G2-T1 | Trần Đức Thọ | @toilatrung | 🟡 Đang làm | Chưa cập nhật tổng frame và số frame đã annotate |
 
 Mức hoàn thành: ✅ xong **và đã qua review** · 🟡 đã/đang annotate nhưng chưa xác nhận review · ⛔ bị chặn · ⬜ chưa bắt đầu hoặc chưa có cập nhật
 
 ## Tổng kết tạm thời
 
-- Đã có báo cáo hoàn thành ít nhất 65 frame: job 1370 (25), job 1372 (25), và 15 frame đang cần xác nhận thuộc job 1376 hay 1591.
-- Chưa có blocker kỹ thuật được báo cáo cho jobs 1372 và 1376.
-- Job 1370 đã annotate đủ 25/25 ảnh, đang self-QC / chờ review.
+- Job 1370 đã hoàn thành lượt annotate ban đầu và đang rework theo feedback.
+- Jobs 1372 và 1586 đang được thực hiện.
+- Jobs 1374 và 1376 chưa bắt đầu.
+- Chưa có số liệu thống nhất về tổng frame và số frame đã annotate để tính tỷ lệ hoàn thành chung.
 - Edge case mở: [P-001](../problem-backlog.md#p-001) và [P-002](../problem-backlog.md#p-002).
 - Pain point / chất lượng dữ liệu: [P-003](../problem-backlog.md#p-003), [P-004](../problem-backlog.md#p-004), [P-005](../problem-backlog.md#p-005).
 
@@ -42,13 +44,15 @@ Mức hoàn thành: ✅ xong **và đã qua review** · 🟡 đã/đang annotate
 - Polyline cho lane marking dài tốn nhiều thao tác thủ công.
 - Export có cả `traffic sign` và `traffic_sign`; cần kiểm tra taxonomy trước khi dùng dataset cho bước sau.
 - Automatic Annotation trong CVAT chưa có model khả dụng.
-- Báo cáo của Lê Ngọc Nam có mâu thuẫn giữa job, link, số frame và trạng thái; cần xác nhận trước khi chốt tổng số.
 
 ## Kế hoạch tiếp theo
 
-- Trần Đức Thọ kiểm tra job 1374 và điều phối lại nếu Nguyễn Đức Hà bận.
-- Trịnh Quang Trung kiểm tra jobs 1586, 1591 và điều phối lại nếu annotator bận.
-- Review jobs 1370, 1372 và xác nhận job tương ứng với báo cáo 15/25 của Lê Ngọc Nam.
+- Nguyễn Xuân Việt Anh review lượt rework của job 1370.
+- Nguyễn Đức Hà tiếp tục job 1374 và review job 1372.
+- Lê Ngọc Nam bắt đầu job 1376 và review job 1374.
+- Trần Đức Thọ tiếp tục job 1586 và review job 1376.
+- Trịnh Quang Trung điều phối task SEGMENTATION và review job 1586.
+- Trần Đức Thọ điều phối các task BBOX.
 - Chốt rule chung cho drivable area và crosswalk/lane marking, rồi ghi vào `so-quyet-dinh.md`.
 - Chuẩn hoá taxonomy `traffic sign` / `traffic_sign` trước khi dùng export downstream.
 - Nghiên cứu auto-annotation sau khi rule và taxonomy đã ổn định.
