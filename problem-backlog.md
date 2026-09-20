@@ -13,6 +13,17 @@ Những trường hợp guideline chưa trả lời rõ và các pain point về
 | [P-005](#p-005) | Automatic Annotation chưa có model khả dụng | Pain point công cụ | — | 🔴 Mở | — |
 | [P-006](#p-006) | Night/low-light: khó xác định boundary xe ở xa hoặc xe tối màu | Guideline mơ hồ | §3.1 | 🗣️ Đang bàn | — |
 | [P-007](#p-007) | CVAT/server mất kết nối, nguy cơ mất annotation chưa persist | Pain point công cụ | — | 🔴 Mở | — |
+| [P-008](#p-008) | Building vs wall khi tường gắn liền công trình | Guideline mơ hồ | — | 🗣️ Đang bàn | — |
+| [P-009](#p-009) | Vegetation vs sky qua khe hở tán cây | Guideline mơ hồ | — | 🗣️ Đang bàn | — |
+| [P-010](#p-010) | Fence/vật thể rỗng: pixel trong khe thuộc class nào | Guideline mơ hồ | — | 🗣️ Đang bàn | — |
+| [P-011](#p-011) | Boundary pole/traffic_light/traffic_sign; label `pole` quá tổng quát | Guideline mơ hồ | — | 🗣️ Đang bàn | — |
+| [P-012](#p-012) | Attribute `truncated` chưa rõ áp dụng cho Semantic Segmentation | Guideline mơ hồ | — | 🔴 Mở | — |
+| [P-013](#p-013) | Brush chưa hỗ trợ Closed Boundary Fill / Smart Fill | Pain point công cụ | — | 🔴 Mở | — |
+| [P-014](#p-014) | Thiếu công cụ hỗ trợ geometry (ruler, snapping, alignment) | Pain point công cụ | — | 🔴 Mở | — |
+| [P-015](#p-015) | Shortcut dễ thao tác nhầm, thiếu confirmation cho destructive action | Pain point công cụ | — | 🔴 Mở | — |
+| [P-016](#p-016) | Reviewer trùng Annotator ở một số thời điểm | Quy trình / QC | — | 🔴 Mở | — |
+| [P-017](#p-017) | Job chuyển Validation khi Annotation chưa Completed | Quy trình / QC | — | 🔴 Mở | — |
+| [P-018](#p-018) | Issue trên CVAT chưa có taxonomy thống nhất | Quy trình / QC | — | 🔴 Mở | — |
 
 **Trạng thái:** 🔴 Mở · 🗣️ Đang bàn · ↗️ Hỏi BTC · ✅ Đã chốt (trỏ sang QĐ) · 🛠️ Làm tool · ⚪ Bỏ (ghi lý do)
 
@@ -131,6 +142,151 @@ Những trường hợp guideline chưa trả lời rõ và các pain point về
   1. Annotator tự lưu ý chủ động save thường xuyên trong lúc chờ giải pháp công cụ.
   2. Xây dựng autosave/checkpoint theo frame, lưu annotation tạm theo version, và merge incremental annotation vào dataset chính khi kết nối ổn định trở lại.
 - **Xử lý tạm trong lúc chờ:** Chưa có cơ chế autosave; annotator chủ động save/kiểm tra lại annotation sau khi mất kết nối trước khi tiếp tục.
+- **Kết quả:** 🔴 Mở.
+
+## P-008
+
+**Building vs wall khi tường gắn liền công trình**
+
+- **Loại:** Guideline mơ hồ (`UNCERTAIN_CLASS`)
+- **Mục guideline:** — (Semantic Segmentation, chưa có số mục)
+- **Người phát hiện:** Team T011 · phát hiện trong quá trình Semantic Segmentation Task 184, tổng hợp 20/09/2026
+- **Link CVAT:** Task 184 — chưa gắn frame cụ thể
+- **Mô tả:** Khó phân biệt vùng `building` và `wall`, đặc biệt khi tường gắn trực tiếp với công trình.
+- **Các cách hiểu:**
+  1. Bề mặt thuộc cấu trúc/tòa nhà → `building`.
+  2. Tường độc lập hoặc tường ranh giới → `wall`.
+- **Xử lý tạm trong lúc chờ:** Bám theo guideline, không tự suy đoán khi không đủ evidence; case chưa rõ → raise Issue cho Reviewer/Lead.
+- **Kết quả:** 🗣️ Đang bàn.
+
+## P-009
+
+**Vegetation vs sky qua khe hở tán cây**
+
+- **Loại:** Guideline mơ hồ (`UNCERTAIN_BOUNDARY`)
+- **Mục guideline:** — (Semantic Segmentation)
+- **Người phát hiện:** Team T011 · Task 184, tổng hợp 20/09/2026
+- **Link CVAT:** Task 184 — chưa gắn frame cụ thể
+- **Mô tả:** Tán cây có nhiều khe nhỏ để lộ sky phía sau, gây khó khăn khi annotation ở mức pixel.
+- **Các cách hiểu:**
+  1. Tô `vegetation` liên tục theo silhouette tán cây.
+  2. Giữ pixel `sky` tại các khe nhìn xuyên rõ.
+- **Xử lý tạm trong lúc chờ:** Ưu tiên phương án 2 nếu nhìn thấy rõ — pixel phải phản ánh đúng semantic class thực tế đang hiển thị, không lấp vùng bằng class đoán chỉ để đơn giản hoá annotation. Đây là cách nhóm đang áp dụng thực tế trong tuần, **chưa chốt chính thức vào `so-quyet-dinh.md`**.
+- **Kết quả:** 🗣️ Đang bàn.
+
+## P-010
+
+**Fence/vật thể rỗng: pixel trong khe thuộc class nào**
+
+- **Loại:** Guideline mơ hồ (`UNCERTAIN_BOUNDARY` / `UNCERTAIN_SCOPE`)
+- **Mục guideline:** — (Semantic Segmentation)
+- **Người phát hiện:** Team T011 · Task 184, tổng hợp 20/09/2026
+- **Link CVAT:** Task 184 — chưa gắn frame cụ thể
+- **Mô tả:** Fence và các vật thể dạng lưới/khe cho phép nhìn thấy semantic class phía sau.
+- **Các cách hiểu:**
+  1. Mask liên tục theo silhouette ngoài của vật thể.
+  2. Pixel trong khe thuộc class thực tế nhìn thấy phía sau.
+- **Xử lý tạm trong lúc chờ:** Ưu tiên phương án 2 nếu background nhìn thấy rõ; một pixel chỉ thuộc tối đa một semantic class. Áp dụng thực tế trong tuần, **chưa chốt chính thức**.
+- **Kết quả:** 🗣️ Đang bàn.
+
+## P-011
+
+**Boundary pole/traffic_light/traffic_sign; label `pole` quá tổng quát**
+
+- **Loại:** Guideline mơ hồ (`SEMANTIC_BOUNDARY`)
+- **Mục guideline:** — (Semantic Segmentation)
+- **Người phát hiện:** Team T011 · Task 184, tổng hợp 20/09/2026
+- **Link CVAT:** Task 184 — chưa gắn frame cụ thể
+- **Mô tả:** Các object có thể cùng thuộc một cấu trúc vật lý nhưng phải tách thành các semantic label khác nhau — ví dụ cột đèn → `pole`, phần đèn → `traffic_light`; cột biển báo → `pole`, phần biển → `traffic_sign`. Boundary tại vùng tiếp giáp đôi khi không rõ. Ngoài ra, `pole` hiện gộp chung nhiều dạng vật thể khác hình thái (cột điện, cột đèn, cột biển báo, các dạng support khác) vào cùng một class.
+- **Xử lý tạm trong lúc chờ:** Tách theo semantic meaning, không gộp toàn bộ physical structure vào một class.
+- **Đề xuất:** Guideline v2 cần bổ sung positive/negative example cho `pole` và các case tiếp giáp pole/traffic_light/traffic_sign để thống nhất cách xử lý.
+- **Kết quả:** 🗣️ Đang bàn.
+
+## P-012
+
+**Attribute `truncated` chưa rõ áp dụng cho Semantic Segmentation**
+
+- **Loại:** Guideline mơ hồ (`GUIDELINE_AMBIGUITY`)
+- **Mục guideline:** — (cần làm rõ mục nào áp dụng cho BBOX, mục nào cho Semantic Segmentation)
+- **Người phát hiện:** Team T011 · Task 184, tổng hợp 20/09/2026
+- **Link CVAT:** Task 184 — chưa gắn frame cụ thể
+- **Mô tả:** Attribute `truncated` gây khó hiểu khi áp dụng cho Semantic Segmentation.
+- **Xử lý tạm trong lúc chờ:** Trong segmentation, chỉ annotate pixel nhìn thấy; mask dừng tại biên ảnh; không suy đoán vùng ngoài frame.
+- **Đề xuất:** Guideline cần làm rõ attribute nào áp dụng cho BBOX và attribute nào thực sự cần cho Semantic Segmentation.
+- **Kết quả:** 🔴 Mở.
+
+## P-013
+
+**Brush chưa hỗ trợ Closed Boundary Fill / Smart Fill**
+
+- **Loại:** Pain point công cụ
+- **Mục guideline:** —
+- **Người phát hiện:** Team T011 · Task 184, tổng hợp 20/09/2026
+- **Link CVAT:** Task 184 — chưa gắn frame cụ thể
+- **Mô tả:** Brush hiện tại chưa hỗ trợ tốt workflow vẽ boundary kín rồi tự động fill vùng bên trong. Với vùng lớn hoặc phức tạp, annotator phải tô thủ công nhiều lần.
+- **Đề xuất:** Closed Boundary Fill, Smart Fill, Region Fill.
+- **Kết quả:** 🔴 Mở.
+
+## P-014
+
+**Thiếu công cụ hỗ trợ geometry (ruler, snapping, alignment)**
+
+- **Loại:** Pain point công cụ
+- **Mục guideline:** —
+- **Người phát hiện:** Team T011 · Task 184, tổng hợp 20/09/2026
+- **Link CVAT:** Task 184 — chưa gắn frame cụ thể
+- **Mô tả:** CVAT chưa có công cụ hỗ trợ ruler, straight-line alignment, curvature guidance, boundary snapping, gây khó khăn khi cần giữ boundary nhất quán. Object như vegetation, fence, pole, traffic sign, traffic light có boundary phức tạp, nhỏ hoặc chứa nhiều khe — annotate chính xác từng pixel làm tăng đáng kể thời gian thực hiện.
+- **Kết quả:** 🔴 Mở.
+
+## P-015
+
+**Shortcut dễ thao tác nhầm, thiếu confirmation cho destructive action**
+
+- **Loại:** Pain point công cụ
+- **Mục guideline:** —
+- **Người phát hiện:** Team T011 · tổng hợp 20/09/2026
+- **Link CVAT:** Không gắn với job cụ thể
+- **Mô tả:** Một số thao tác bằng shortcut có thể thay đổi/xóa annotation, xảy ra nhanh và thiếu confirmation trong các operation có rủi ro.
+- **Đề xuất:** Undo history rõ ràng; confirmation cho destructive action; autosave/version checkpoint (liên hệ [P-007](#p-007)).
+- **Kết quả:** 🔴 Mở.
+
+## P-016
+
+**Reviewer trùng Annotator ở một số thời điểm**
+
+- **Loại:** Quy trình / QC
+- **Mục guideline:** — (xem quy ước "không review job do chính mình gán" trong `README.md`)
+- **Người phát hiện:** Team T011 · Semantic Segmentation Task 184, tổng hợp 20/09/2026
+- **Link CVAT:** Task 184 — chưa gắn job/frame cụ thể
+- **Mô tả:** Có thời điểm trong quá trình reassignment, reviewer trùng với chính annotator của job, vi phạm nguyên tắc review độc lập.
+- **Xử lý tạm trong lúc chờ:** Team đã thực hiện reassignment để đưa workflow về đúng quy trình.
+- **Đề xuất:** CVAT/workflow nên validate `reviewer_id != annotator_id`.
+- **Kết quả:** 🔴 Mở.
+
+## P-017
+
+**Job chuyển Validation khi Annotation chưa Completed**
+
+- **Loại:** Quy trình / QC
+- **Mục guideline:** —
+- **Người phát hiện:** Team T011 · Semantic Segmentation Task 184, tổng hợp 20/09/2026
+- **Link CVAT:** Task 184 — chưa gắn job/frame cụ thể
+- **Mô tả:** Một số job được chuyển stage sang Validation khi state annotation chưa Completed.
+- **Workflow mong muốn:** Annotation / In Progress → Self-QC → Annotation / Completed → Validation → Rework hoặc Acceptance.
+- **Xử lý tạm trong lúc chờ:** Team đã thực hiện reassignment để đưa job về đúng workflow.
+- **Đề xuất:** Không cho phép chuyển Validation nếu state != Completed.
+- **Kết quả:** 🔴 Mở.
+
+## P-018
+
+**Issue trên CVAT chưa có taxonomy thống nhất**
+
+- **Loại:** Quy trình / QC
+- **Mục guideline:** —
+- **Người phát hiện:** Team T011 · tổng hợp 20/09/2026
+- **Link CVAT:** Không gắn với job cụ thể
+- **Mô tả:** Hiện tại các Issue chủ yếu thể hiện lỗi tại frame nhưng chưa có taxonomy thống nhất, gây khó khăn khi tổng hợp và cải tiến guideline.
+- **Đề xuất Issue taxonomy:** `ANNOTATOR_ERROR`, `UNCERTAIN_CLASS`, `UNCERTAIN_BOUNDARY`, `UNCERTAIN_SCOPE`, `GUIDELINE_GAP`, `ATTRIBUTE_ERROR`, `TOOL_ERROR`, `DATA_ERROR`.
 - **Kết quả:** 🔴 Mở.
 
 ---
